@@ -26,7 +26,7 @@ table tr th{
 }
 
 #btnmuestragrupos{
-display: none;
+	display: none;
 }
 
 .entradaUsuario
@@ -39,7 +39,13 @@ display: none;
 	width:900px;
 }
 
+#txtDocente, #txtClave{
+	border-bottom: 1px solid purple;
+}
+#fondo{
+	margin-top: 200px;
 
+}
 
 
 
