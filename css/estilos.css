@@ -1,11 +1,12 @@
 body
 {
-	border: 1px solid blue;
 	border-radius: 5px;
 	margin: 0 auto;
 	max-width: 1024px;
 }
-
+body header{
+	font-family: helvetica;
+}
 body header img
 {
 	float: right;
@@ -17,6 +18,17 @@ body header h1
 {
 	margin: 10px 0px 0px 30px;
 }
+h1{
+	text-align: center;
+	font-size: 24px;
+}
+nav ul li a{
+	color:purple;
+}
+nav{
+	display:none;
+	color:black;
+}
 section 
 {
 	text-align: center;
@@ -24,11 +36,6 @@ section
 table tr th{
 	text-align: center;
 }
-
-#btnmuestragrupos{
-	display: none;
-}
-
 .entradaUsuario
 {
 	margin: 0 auto;
@@ -38,19 +45,15 @@ table tr th{
 	display: none;
 	width:900px;
 }
+#sep{
+	position:absolute;
+	width: 315px;
+	float:left;
 
+}
 #txtDocente, #txtClave{
 	border-bottom: 1px solid purple;
 }
-#fondo{
-	margin-top: 200px;
-
+#titulo-entrar{
+	color:white;
 }
-
-
-
-
-
-
-
-

@@ -19,7 +19,8 @@ var inicio = function(){
 		     if(data.respuesta){
 		     	
 		     	$(".entradaUsuario").hide("slow");
-		     	$("#btnmuestragrupos").show("slow");
+		     	//$("#muestragrupos").show("slow");
+		     	$("#barra").show("slow");
 		     }else{
 		     	alert("Docente no registrado");
 		     }
@@ -62,7 +63,7 @@ var inicio = function(){
 
 
 
-	$("#btnmuestragrupos").on("click",vergrupos);
+	$("#muestragrupos").on("click",vergrupos);
 	$("#btnEntrar").on("click",entrar);
 }
 $(document).on("ready",inicio);
