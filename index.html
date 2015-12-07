@@ -5,92 +5,57 @@
 	<title>Curso PW</title>
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body background="img/fondo.jpg">
 	<header>
 		<div class='page-header'>
 			<div id="titulo">
-				<h1>Control Docente <br><small>Instituto Tecnológico de Culiacán</small></h1>	
+				<h1>CONTROL DOCENTE<br><small>INSTITUTO TECNOLÓGICO DE CULIACÁN</small></h1>	
 			</div>
 			<div id="logoitc">
 				<img src="img/logoitc.png" alt="Instituto Tecnológico de Culiacán" id="logo">
 				<img src="img/sep.png" id="sep">
 			</div>		
 		</div>
-	<nav class="navbar navbar-default" id="barra">
-		<ul>
-			<li>
-				<a id="muestragrupos">Grupos</a>
-			</li>
-		</ul>
-	</nav>
+		<nav class="navbar navbar-default" id="barra">
+			<ul>
+				<li>
+					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="muestragrupos"><i class="material-icons right">supervisor_account</i>GRUPOS</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="card-panel" id="user">
+			<a class="waves-effect waves-light btn red" href="index.html">Salir</a>
+		</div>
 	</header>
-		<section>
-			<div class="entradaUsuario card-panel">
-			  <div class="card-panel  purple darken-1">
-			    <h3 class="panel-title "id="titulo-entrar" >Datos del Docente</h3>
-			  </div>
-				<div class="row">
-			        <div class="input-field col s11">
-			          <i class="material-icons prefix">perm_identity</i>
-			          <input type="text" class="validate" id="txtDocente" placeholder="Nombre del docente" autofocus>
-			    	</div>
-			    </div>
-			    <div class="row">
-			        <div class="input-field col s11">
-			          <i class="material-icons prefix">vpn_key</i>
-			          <input type="password" class="validate" id="txtClave" placeholder="Contraseña">
-			    	</div>
-			    </div>
-			    
-			    <button id="btnEntrar" class="btn btn-success btn-block green"><i class="material-icons left">send</i>Entrar</button>
-			  </div>
+	<section>
+		<div class="entradaUsuario card-panel" id="entradaUsuario">
+			<div class="card-panel  purple darken-1">
+				<h3 class="panel-title "id="titulo-entrar">DATOS DEL DOCENTE</h3>
 			</div>
-
-			<!--<button id="btnmuestragrupos" class="btn btn-success btn-lg">Mostrar tabla</button>-->
-			
-			<div class="gruposDocente">
-				<h3>Grupos semestre</h3>
-				<table class="table table-striped" id="tablaGrupos">
-  					
-				</table>
+			<div class="row">
+				<div class="input-field col s11">
+					<i class="material-icons prefix">perm_identity</i>
+					<input type="text" class="validate" id="txtDocente" placeholder="Usuario" autofocus>
+				</div>
 			</div>
-			
-			
-			
-		
+			<div class="row">
+				<div class="input-field col s11">
+					<i class="material-icons prefix">lock_outline</i>
+					<input type="password" class="validate" id="txtClave" placeholder="Contraseña">
+					<a class="btn-floating btn-small waves-effect waves-light purple darken-1" id="mostrarClave"><i class="material-icons">visibility_off</i></a>
+				</div>
+			</div>
+			<button id="btnEntrar" class="btn btn-success btn-block green"><i class="material-icons left">send</i>Entrar</button>
+		</div>
+		<div class="gruposDocente">
+			<span class="titulotabla">GRUPOS SEMESTRE</span>
+			<table class="striped" id="tablaGrupos"></table>
+		</div>
 	</section>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="js/eventos.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
