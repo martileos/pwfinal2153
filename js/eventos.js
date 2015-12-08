@@ -21,10 +21,8 @@ var inicio = function(){
 
 					if(data.respuesta){
 						$(".entradaUsuario").hide("slow");
-
 						$("#barra").show("slow");
-
-						$("#user").find("a").before("<i class='material-icons'>perm_identity</i>  "+docente+"<br><br>");
+						$("#user").append("<i class='material-icons'>perm_identity</i>"+docente+"<br><br>");
 						$("#user").show("slow");
 					}else{
 						alert("Docente no registrado");

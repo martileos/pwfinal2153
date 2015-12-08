@@ -50,11 +50,12 @@ table tr th{
 	border-bottom: 1px solid purple;
 }
 #user{
-	color:black;
 	display:none;
 	font-family: "Helvetica";
 	font-weight: bold;
-	width: 200px;
+	margin-bottom: -15px;
+	text-align: right;
+	width: 220px;
 }
 #user a{
 	width: 100%;

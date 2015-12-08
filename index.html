@@ -17,18 +17,19 @@
 			<div id="logoitc">
 				<img src="img/logoitc.png" alt="Instituto Tecnológico de Culiacán" id="logo">
 				<img src="img/sep.png" id="sep">
-			</div>		
+			</div>	
 		</div>
-		<nav class="navbar navbar-default" id="barra">
+		<div class="right" id="user"></div>
+		<nav class="navbar navbar-default left" id="barra">
 			<ul>
 				<li>
-					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="muestragrupos"><i class="material-icons right">supervisor_account</i>GRUPOS</a>
+					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="muestragrupos"><i class="material-icons right">supervisor_account</i>Grupos</a>
+				</li>
+				<li class="right">
+					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" href="index.html"><i class="material-icons right">exit_to_app</i>Salir</a>
 				</li>
 			</ul>
 		</nav>
-		<div class="card-panel" id="user">
-			<a class="waves-effect waves-light btn red" href="index.html">Salir</a>
-		</div>
 	</header>
 	<section>
 		<div class="entradaUsuario card-panel" id="entradaUsuario">
@@ -50,6 +51,7 @@
 			</div>
 			<button id="btnEntrar" class="btn btn-success btn-block green"><i class="material-icons left">send</i>Entrar</button>
 		</div>
+		<br>
 		<div class="gruposDocente">
 			<span class="titulotabla">GRUPOS SEMESTRE</span>
 			<table class="striped" id="tablaGrupos"></table>
