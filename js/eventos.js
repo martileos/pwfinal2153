@@ -1,9 +1,10 @@
-var inicio = function(){
+ var inicio = function(){
 	var parametros="";
 	var docente="";
 	var clave="";
 
 	var entrar = function(){
+		debugger
 
 		docente = $("#txtDocente").val();
 		clave   = $("#txtClave").val();
@@ -34,6 +35,9 @@ var inicio = function(){
 	}
 	
 	var vergrupos = function(){
+		$("#js-DocenteParciales").hide();
+		$("#js-DocenteUnidad").hide();
+		$("#js-DocenteSeguimiento").hide();
 		$(".gruposDocente").toggle("show");
 		$("#tablaGrupos").html("");
 		
@@ -65,6 +69,149 @@ var inicio = function(){
 		});
 
 	}
+var verfecha = function(){
+		$("#js-DocenteUnidad").hide();
+		$("#js-DocenteParciales").hide();
+		$("#js-gruposDocente").hide();
+		$(".fechaseguimiento").toggle("show");
+		$("#tablasegui").html("");
+		
+		$.ajax({
+
+			type: "GET",
+			dataType: "json",
+			url: "http://intertec.itculiacan.edu.mx/intertecmovil/seguimientos.php?cadena="+docente+"-"+clave,
+			data: parametros,
+			success: function (response) {
+
+				var renglon = "<tr><th>fecha de palaniacion</th><th>seguimiento01</th><th>seguimiento02</th><th>seguimiento03</th> <th>Reporte final</th></tr>";
+				$('#tablasegui').append(renglon);
+				renglon='';
+
+				$.each(response, function (i, item) {
+					renglon += '<tr><td>' + item.fecplaneainstru 
+					+ '</td><td>' + item.seguimiento01
+					+ '</td><td>'+ item.seguimiento02
+					+'</td><td>'+ item.seguimiento03 
+					+'</td><td>' + item.reportefinal  + '</td></tr>';
+				});
+				$('#tablasegui').append(renglon);
+			}
+		});
+
+	}
+
+	var verParciales = function(){
+
+		$("#js-DocenteUnidad").hide();
+		$("#js-gruposDocente").hide();
+		$("#js-DocenteSeguimiento").hide();
+		$(".DocenteParciales").toggle("show");
+		$("#tablaParciales").html("");
+		
+		$.ajax({
+
+			type: "GET",
+			dataType: "json",
+			//url: "http://intertec.itculiacan.edu.mx/intertecmovil/grupos.php?cadena="+docente+"-"+clave,
+			url:"http://intertec.itculiacan.edu.mx/intertecmovil/unidadesexa.php?cadena=920-12345678-AEB1011-9A",
+			data: parametros,
+			success: function (response) {
+				debugger
+				//var obj = response;
+				//var lst = $.map(obj, function(el) { return el });
+
+				var renglon = "<tr><th>Parcial</th><th>Fecha Programada</th><th>Fecha Real</th></tr>";
+				$('#tablaParciales').append(renglon);
+				renglon='';
+				var contador = 1;
+				var pos1 = 0;
+				var pos2 = 1;
+				$.each(response, function (i, item) {
+					debugger
+					var lst = showOBJ(item);
+
+					for (var i = 0; i<15; i++) {
+					    renglon += 
+					'<tr><td>' + contador 
+					+ '</td><td style="text-align:center">' + lst[pos1]
+					+ '</td><td style="text-align:center">'+ lst[pos2]
+					+ '</td></tr>';
+					contador++;
+					pos1 = pos2+1;
+					pos2 = pos1+1;
+					}
+					
+					
+				});
+				$('#tablaParciales').append(renglon);
+			}
+		});
+
+	}
+
+
+	var verUnidades = function(){
+		$("#js-DocenteParciales").hide();
+		$("#js-gruposDocente").hide();
+		$("#js-DocenteSeguimiento").hide();
+		$(".DocenteUnidad").toggle("show");
+		$("#tablaUnidades").html("");
+		
+		$.ajax({
+
+			type: "GET",
+			dataType: "json",
+			//url: "http://intertec.itculiacan.edu.mx/intertecmovil/grupos.php?cadena="+docente+"-"+clave,
+			url:"http://intertec.itculiacan.edu.mx/intertecmovil/unidadesmat.php?cadena=920-12345678-AEB1011-9A",
+			data: parametros,
+			success: function (response) {
+				debugger
+
+				var obj = response;
+
+				var renglon = "<tr><th>Unidad</th><th>Fecha Inicial Programada</th><th>Fecha Final Programada</th><th>Fecha Inicial Real</th><th>Fecha Final Real</th></tr>";
+				$('#tablaUnidades').append(renglon);
+				renglon='';
+				var contador = 1;
+				var pos1 = 0;
+				var pos2 = 1;
+				$.each(response, function (i, item) {
+					debugger
+
+					renglon += 
+					'<tr><td>' + item.unidad 
+					+ '</td><td style="text-align:center">' + item.fechainicialprog
+					+ '</td><td style="text-align:center">'+ item.fechafinalprog
+					+ '</td><td style="text-align:center">'+ item.fechainicialreal
+					+ '</td><td style="text-align:center">'+ item.fechafinalreal
+					+ '</td></tr>';
+					contador++;
+					pos2 ++;
+					pos1 ++;
+					
+				});
+				$('#tablaUnidades').append(renglon);
+			}
+		});
+
+	}
+
+	function showOBJ(item)
+	{
+		debugger
+		var obj = item;
+		var lst = $.map(obj, function(el) { return el });
+
+		return lst;
+
+
+	}
+
+
+
+
+
 	const TECLA_ENTER = 13;
 	var txtCajas = $("#entradaUsuario").find("input");
 
@@ -104,6 +251,10 @@ var inicio = function(){
 	$(txtCajas).on("keypress",teclatxtCajas);
 	$("#mostrarClave").on("click",muestraClave);
 	$("#muestragrupos").on("click",vergrupos);
+	$("#muestrafecha").on("click",verfecha);
+
+	$("#muestraParciales").on("click",verParciales);
+	$("#muestraUnidades").on("click",verUnidades);
 	$("#btnEntrar").on("click",entrar);
 }
 $(document).on("ready",inicio);
