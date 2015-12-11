@@ -84,7 +84,7 @@ var verfecha = function(){
 			data: parametros,
 			success: function (response) {
 
-				var renglon = "<tr><th>fecha de palaniacion</th><th>seguimiento01</th><th>seguimiento02</th><th>seguimiento03</th> <th>Reporte final</th></tr>";
+				var renglon = "<tr><th>Fecha de planeacion</th><th>Seguimiento01</th><th>Seguimiento02</th><th>Seguimiento03</th> <th>Reporte Final</th></tr>";
 				$('#tablasegui').append(renglon);
 				renglon='';
 
