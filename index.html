@@ -26,6 +26,12 @@
 					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="muestragrupos"><i class="material-icons right">supervisor_account</i>Grupos</a>
 				</li>
 				<li>
+					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="pideDatosMat"><i class="material-icons right">person_pin</i>Alumnos</a>
+				</li>
+				<li>
+					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="pideDatosMat2"><i class="material-icons right">done</i>Calificaciones</a>
+				</li>
+				<li>
 					<a class="waves-effect waves-teal btn-flat grey-text text-darken-1" id="muestrafecha"><i class="material-icons right">today</i>Fecha Seguimientos</a>
 				</li>
 				<li>
@@ -64,6 +70,17 @@
 			<span class="titulotabla">GRUPOS SEMESTRE</span>
 			<table class="striped" id="tablaGrupos"></table>
 		</div>
+
+		<div class="AlumnosGpos" id="js-AlumnosGpos">
+			<span class="titulotabla">ALUMNOS POR GRUPO</span>
+			<table class="striped" id="tablaAlumnos"></table>
+		</div>
+
+		<div class="CalifGpos" id="js-CalifGpos">
+			<span class="titulotabla">CALIFICACIÓN POR GRUPO</span>
+			<table class="striped" id="tablaCalif"></table>
+		</div>
+
 		<div class="fechaseguimiento" id="js-DocenteSeguimiento">
 			<span class="titulotabla">FECHAS DE SEGUIMIENTO DEL CURSO</span>
 			<table class="striped" id="tablasegui"></table>
@@ -79,6 +96,29 @@
 			<table class="striped" id="tablaUnidades"></table>
 		</div>
 	</section>
+
+	<section>
+		<div class="datosMateria card-panel" id="datosMateria">
+			<div class="card-panel  red">
+				<h3 class="panel-title "id="titulo-entrar-alumnos">DATOS DEL GRUPO</h3>
+			</div>
+			<div class="row">
+				<div class="input-field col s11">
+					
+					<input type="text" class="validate" id="txtMateria" placeholder="Clave Materia. Ej: AEB1055">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s11">
+					
+					<input type="text" class="validate" id="txtGpo" placeholder="Clave GPO. Ej:fD">
+				</div>
+			</div>
+			<button id="btnBuscarGpo" class="btn btn-success btn-block green"><i class="material-icons right">search</i>Buscar</button>
+		</div>
+		
+	</section>
+
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="js/eventos.js"></script>
 </body>

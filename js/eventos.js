@@ -35,8 +35,11 @@
 	}
 	
 	var vergrupos = function(){
+		$("#js-AlumnosGpos").hide();
 		$("#js-DocenteParciales").hide();
 		$("#js-DocenteUnidad").hide();
+		$("#js-CalifGpos").hide();
+		$("#datosMateria").hide();
 		$("#js-DocenteSeguimiento").hide();
 		$(".gruposDocente").toggle("show");
 		$("#tablaGrupos").html("");
@@ -69,7 +72,114 @@
 		});
 
 	}
-var verfecha = function(){
+
+	var pideDatosMat = function(){
+		$("#datosMateria").hide();
+		$("#js-CalifGpos").hide();
+		$("#js-gruposDocente").hide();
+		$("#js-DocenteParciales").hide();
+		$("#js-DocenteUnidad").hide();
+		$("#js-DocenteSeguimiento").hide();
+		$(".datosMateria").show("slow");
+		$("#tablaAlumnos").html("");
+		$("#tablaCalif").html("");
+		alum=true;
+	}
+	var pideDatosMat2 = function(){
+		$("#datosMateria").hide();
+		$("#js-CalifGpos").hide();
+		$("#js-gruposDocente").hide();
+		$("#js-DocenteParciales").hide();
+		$("#js-DocenteUnidad").hide();
+		$("#js-AlumnosGpos").hide();
+		$("#js-DocenteSeguimiento").hide();
+		$(".datosMateria").show("slow");
+		$("#tablaAlumnos").html("");
+		$("#tablaCalif").html("");
+		alum=false;
+	}
+
+	var verAlumnosOCalif = function(){
+		$("#js-gruposDocente").hide();
+		$("#js-DocenteParciales").hide();
+		$("#js-DocenteUnidad").hide();
+		$("#js-DocenteSeguimiento").hide();
+		$("#tablaAlumnos").html("");
+		$("#tablaCalif").html("");
+
+		materia = $("#txtMateria").val();
+		gpo   = $("#txtGpo").val();
+
+
+
+		if(materia=="" || gpo==""){
+			alert("Complete los campos para buscar");
+		}else{
+			if(alum){ //Si se esta en la sección de Alumnos
+				$.ajax({
+					cache: false,
+					type: "GET",
+					dataType: "json",
+					url: "http://intertec.itculiacan.edu.mx/intertecmovil/alumnos.php?cadena="+docente+"-"+clave+"-"+materia+"-"+gpo,
+					data: parametros,
+					success: function (data) {
+						
+						var renglon = "<tr><th>Num control</th><th>Nombre alumno</th></tr>";
+						$('#tablaAlumnos').append(renglon);
+						renglon='';
+
+						$.each(data, function (i, item) {
+							renglon += '<tr><td style="text-align:center">' + item.ncontrol
+									+ '</td> <td style="text-align:center">' + item.nombre + '</td></tr>';
+						});
+						$('#tablaAlumnos').append(renglon);
+						$("#datosMateria").hide("slow"); 
+						$(".AlumnosGpos").show("slow"); //Muestra el titulo
+					}
+
+
+				});
+			}else{ //Si se esta en la sección de Calificaciones
+				$.ajax({
+					cache: false,
+					type: "GET",
+					dataType: "json",
+					url: "http://intertec.itculiacan.edu.mx/intertecmovil/califica.php?cadena="+docente+"-"+clave+"-"+materia+"-"+gpo,
+					data: parametros,
+					success: function (data) {						
+						var renglon = "<tr><th>Numero de control</th><th>Clave materia</th><th>Clave de grupo</th><th>Parcial 1</th><th>Parcial 2</th><th>Parcial 3</th><th>Parcial 4</th><th>Parcial 5</th><th>Parcial 6</th><th>Parcial 7</th><th>Parcial 8</th></tr>";
+						$('#tablaCalif').append(renglon);
+						renglon='';
+
+						$.each(data, function (i, item) {
+							renglon += '<tr><td style="text-align:center">' + item.aluctr 
+							+ '</td><td style="text-align:center">' + item.matcve 
+							+ '</td><td style="text-align:center">'+ item.gpocve
+							+'</td><td style="text-align:center">'+ item.lispa1 
+							+'</td><td style="text-align:center">' + item.lispa2 
+							+ '</td><td style="text-align:center">'  + item.lispa3  
+							+ '</td><td style="text-align:center">' + item.lispa4
+							+'</td><td style="text-align:center">' + item.lispa5
+							+'</td><td style="text-align:center">' + item.lispa6 
+							+'</td><td style="text-align:center">' + item.lispa7 
+							+ '</td><td style="text-align:center">' + item.lispa7 + '</td></tr>';
+						});
+						$('#tablaCalif').append(renglon);
+						$("#datosMateria").hide("slow"); 
+						$(".CalifGpos").show("slow"); //Muestra el titulo
+					}
+
+
+				});
+			}
+
+		}
+	}
+
+	var verfecha = function(){
+		$("#datosMateria").hide();
+		$("#js-CalifGpos").hide();
+		$("#js-AlumnosGpos").hide();
 		$("#js-DocenteUnidad").hide();
 		$("#js-DocenteParciales").hide();
 		$("#js-gruposDocente").hide();
@@ -104,6 +214,8 @@ var verfecha = function(){
 	var verParciales = function(){
 
 		$("#js-DocenteUnidad").hide();
+		$("#js-AlumnosGpos").hide();
+		$("#datosMateria").hide();
 		$("#js-gruposDocente").hide();
 		$("#js-DocenteSeguimiento").hide();
 		$(".DocenteParciales").toggle("show");
@@ -153,6 +265,8 @@ var verfecha = function(){
 
 	var verUnidades = function(){
 		$("#js-DocenteParciales").hide();
+		$("#js-AlumnosGpos").hide();
+		$("#datosMateria").hide();
 		$("#js-gruposDocente").hide();
 		$("#js-DocenteSeguimiento").hide();
 		$(".DocenteUnidad").toggle("show");
@@ -251,10 +365,12 @@ var verfecha = function(){
 	$(txtCajas).on("keypress",teclatxtCajas);
 	$("#mostrarClave").on("click",muestraClave);
 	$("#muestragrupos").on("click",vergrupos);
+	$("#pideDatosMat").on("click",pideDatosMat);
+	$("#pideDatosMat2").on("click",pideDatosMat2);
 	$("#muestrafecha").on("click",verfecha);
-
 	$("#muestraParciales").on("click",verParciales);
 	$("#muestraUnidades").on("click",verUnidades);
 	$("#btnEntrar").on("click",entrar);
+	$("#btnBuscarGpo").on("click",verAlumnosOCalif);
 }
 $(document).on("ready",inicio);

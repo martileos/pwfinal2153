@@ -43,7 +43,13 @@ table tr th{
 	bottom: 60px; 
 	left: 160px;
 }
+#datosMateria{
+	font-family: "Helvetica";
+}
 #titulo-entrar{
+	color:white;
+}
+#titulo-entrar-alumnos{
 	color:white;
 }
 #txtDocente, #txtClave{
@@ -74,6 +80,18 @@ table tr th{
 	margin-left: 60px;
 	margin-top: 120px;
 	width:900px;
+}
+.AlumnosGpos, .CalifGpos{
+	display: none;
+	margin-left: 60px;
+	margin-top: 120px;
+	width:900px;
+}
+.datosMateria{
+	display: none;
+	margin: 0 auto;
+	margin-top: 170px;
+	width: 350px;
 }
 
 .DocenteParciales{
